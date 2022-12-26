@@ -1,0 +1,60 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>ecphp</groupId>
+    <artifactId>eu-access-php-client</artifactId>
+    <version>0.0.2-SNAPSHOT</version>
+    <name>EC PHP EU Access Client</name>
+    <description>European Commision - EU Access PHP Client Bundle</description>
+
+    <build>
+
+        <plugins>
+
+            <plugin>
+
+                <groupId>org.openapitools</groupId>
+                <artifactId>openapi-generator-maven-plugin</artifactId>
+                <version>6.2.0</version>
+
+                <executions>
+
+                    <execution>
+
+                        <id>generate-client</id>
+                        <phase>generate-resources</phase>
+
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+
+                        <configuration>
+
+                            <inputSpec>${eu-access.swagger.url}</inputSpec>
+                            <generatorName>php</generatorName>
+                            <templateDirectory>${project.basedir}/templates</templateDirectory>
+                            <output>${project.basedir}</output>
+
+                            <verbose>false</verbose>
+                            <skipIfSpecIsUnchanged>false</skipIfSpecIsUnchanged>
+                            <skipValidateSpec>true</skipValidateSpec>
+                            <invokerPackage>EC\EUAccess\Client</invokerPackage>
+
+                            <configOptions>
+                                <delegatePattern>true</delegatePattern>
+                                <useTags>true</useTags>
+                                <title>${project.name}</title>
+                            </configOptions>
+
+                        </configuration>
+
+                    </execution>
+
+                </executions>
+
+            </plugin>
+
+        </plugins>
+
+    </build>
+
+</project>
